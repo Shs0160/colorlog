@@ -1,3 +1,5 @@
 <ec2에서 mysql 연동>
 mysql -u songheesu -p -h colorlog-db.cni8a28227nn.ap-northeast-2.rds.amazonaws.com
 
+<gcp mysql 연동>
+mysql -u root -p -h 34.64.197.208
