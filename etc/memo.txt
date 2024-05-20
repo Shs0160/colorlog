@@ -3,3 +3,6 @@ mysql -u songheesu -p -h colorlog-db.cni8a28227nn.ap-northeast-2.rds.amazonaws.c
 
 <gcp mysql 연동>
 mysql -u root -p -h 34.64.197.208
+
+<scp jar 파일 전송>
+scp -i "~/.ssh/gcp_key" "colorlog-0.0.1-SNAPSHOT.jar" bsthss0160@34.64.162.241:/home/bsthss0160/backend
