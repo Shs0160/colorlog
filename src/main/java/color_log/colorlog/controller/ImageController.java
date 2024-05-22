@@ -64,10 +64,9 @@ public class ImageController {
         }
     }
 
-    @GetMapping(value = "/get_photogroup",
-            produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/get_photogroup", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<Object> downloadPhotoGroup(){
+    public ResponseEntity<Object> downloadPhotoGroup(@RequestParam Long userId) {
         try {
             // DB에서 가장 큰 photogroupid 가져오기
             Long maxPhotoGroupId = photoGroupService.getMaxPhotoGroupId();
@@ -79,12 +78,11 @@ public class ImageController {
                 throw new Exception("photogroupid and userid mismatch");
             }
             // 경로들을 담을 객체 생성
-            PhotoGroupPathDTO photoGroupPaths = new PhotoGroupPathDTO();
+            PhotoGroup photoGroup = photoGroupService.getPhotoGroupById(userId);
 
-            // 가장 큰 photogroupid에 해당하는 경로들 가져오기
-            PhotoGroup maxPhotoGroup = photoGroupService.getPhotoGroupById(maxPhotoGroupId);
-            photoGroupPaths.setImagePath(maxPhotoGroup.getImagePath());
-            photoGroupPaths.setVideoPath(maxPhotoGroup.getVideoPath());
+            PhotoGroupPathDTO photoGroupPaths = new PhotoGroupPathDTO();
+            photoGroupPaths.setImagePath(photoGroup.getImagePath());
+            photoGroupPaths.setVideoPath(photoGroup.getVideoPath());
 
             return ResponseEntity.ok().body(photoGroupPaths);
         } catch (Exception e) {

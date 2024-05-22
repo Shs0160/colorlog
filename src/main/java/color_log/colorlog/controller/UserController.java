@@ -1,6 +1,7 @@
 package color_log.colorlog.controller;
 
 import color_log.colorlog.S3Uploader;
+import color_log.colorlog.domain.PhotoGroup;
 import color_log.colorlog.domain.User;
 import color_log.colorlog.dto.ImagePathDTO;
 import color_log.colorlog.dto.PhotoGroupDTO;
@@ -64,24 +65,19 @@ public class UserController {
     @GetMapping(value = "/get_result",
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<Object> getResult() {
+    public ResponseEntity<Object> getResult(@RequestParam Long userId) {
         try {
-            Long maxUserId = userService.getMaxUserId();
+            User user = userService.getUserById(userId);
+            PhotoGroup photoGroup = photoGroupService.getPhotoGroupById(userId);
 
-            Long maxPhotoGroupId = photoGroupService.getMaxPhotoGroupId();
-
-            // photogroupid와 userid의 가장 큰 값이 같은지 확인
-            if (!maxPhotoGroupId.equals(maxUserId)) {
-                throw new Exception("photogroupid and userid mismatch");
+            if (user == null || photoGroup == null) {
+                throw new Exception("No data found for userId: " + userId);
             }
 
             ImagePathDTO imagePath = new ImagePathDTO();
+            imagePath.setResultImagePath(user.getResultImagePath());
 
-            /*PhotoGroup maxPhotoGroup = photoGroupService.getPhotoGroupById(maxPhotoGroupId);*/
-            User maxUser = userService.getUserById(maxUserId);
-            imagePath.setResultImagePath(maxUser.getResultImagePath());
-
-            String result = userService.getResult(); // userService에서 결과를 가져오는 메서드 호출
+            String result = userService.getResultById(userId); // userService에서 결과를 가져오는 메서드 호출
 
             resultDTO resultDTO = new resultDTO();
             resultDTO.setImagePath(imagePath);

@@ -58,16 +58,10 @@ public class UserService {
                 });
     }
 
-    public String getResult() {
-        // 실제 데이터베이스에서 가장 큰 userid 값을 가져옵니다.
-        Long maxUserId = userRepository.findMaxUserId();
-
-        // 가져온 maxUserId를 사용하여 해당 결과를 조회합니다.
-        User user = userRepository.findById(maxUserId).orElse(null);
-
-
-        // 가져온 결과를 문자열로 반환합니다.
-        return user.getResult();
+    public String getResultById(Long userId) {
+        // userId에 따른 결과를 반환하는 로직 추가
+        User user = getUserById(userId);
+        return user != null ? user.getResult() : null;
     }
 
     @Transactional
