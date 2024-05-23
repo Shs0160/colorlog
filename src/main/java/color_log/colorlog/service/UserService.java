@@ -65,17 +65,13 @@ public class UserService {
     }
 
     @Transactional
-    public void processUserData(String result, String resultImagePath) throws IOException {
-        // 이미지와 비디오 파일 저장
-
+    public void processUserData(String result, String resultImagePath, String facePaletteImagePath) {
         User user = new User();
         user.setResult(result);
         user.setResultImagePath(resultImagePath);
+        user.setFacePaletteImagePath(facePaletteImagePath); // 새로운 필드 설정
 
         userRepository.save(user);
-
-
-
     }
 
 

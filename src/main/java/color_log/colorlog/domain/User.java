@@ -22,6 +22,8 @@ public class User {
 
     private String resultImagePath;
 
+    private String facePaletteImagePath;
+
     @ManyToOne
     @JoinColumn(name = "photo_group_id")
     private PhotoGroup photoGroup;
@@ -57,6 +59,15 @@ public class User {
     public void setPhotoGroupId(PhotoGroup photoGroup) {
         this.photoGroup = photoGroup;
     }
+
+    public String getFacePaletteImagePath() {
+        return facePaletteImagePath;
+    }
+
+    public void setFacePaletteImagePath(String facePaletteImagePath) {
+        this.facePaletteImagePath = facePaletteImagePath;
+    }
+
 }
 
 

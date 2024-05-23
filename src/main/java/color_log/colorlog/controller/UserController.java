@@ -40,44 +40,51 @@ public class UserController {
         this.s3Uploader = s3Uploader;
     }
 
-    @PostMapping(value = "/user_upload",
-            consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/user_upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<Object> uploadUserData(
-
-        @RequestParam("result") String result,
-        @RequestParam("resultImage") MultipartFile resultImage
-
+            @RequestParam("result") String result,
+            @RequestParam("resultImage") MultipartFile resultImage,
+            @RequestParam("facePalette") MultipartFile facePalette // 추가된 부분
     ) {
         try {
-            Long UserId = userService.getNextMaxUserId();
-            String resultImagePath = s3Uploader.uploadFileToS3(resultImage, UserId + "_resultImage");
+            Long userId = userService.getNextMaxUserId();
 
-            userService.processUserData(result, resultImagePath);
+            // resultImage를 S3에 업로드
+            String resultImagePath = s3Uploader.uploadFileToS3(resultImage, userId + "_resultImage");
+
+            // facePalette를 S3에 업로드
+            String facePaletteImagePath = s3Uploader.uploadFileToS3(facePalette, userId + "_facePaletteImage");
+
+            // 결과와 경로를 데이터베이스에 저장
+            userService.processUserData(result, resultImagePath, facePaletteImagePath);
+
             return ResponseEntity.ok().body("User uploaded successfully.");
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            PhotoGroupDTO.ResponseDTO responseDTO = new PhotoGroupDTO.ResponseDTO();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to upload user");
         }
     }
 
-    @GetMapping(value = "/get_result",
-            produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/get_result", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<Object> getResult(@RequestParam Long userId) {
         try {
+            // userId에 해당하는 사용자 데이터를 가져옴
             User user = userService.getUserById(userId);
-            PhotoGroup photoGroup = photoGroupService.getPhotoGroupById(userId);
-
-            if (user == null || photoGroup == null) {
-                throw new Exception("No data found for userId: " + userId);
+            if (user == null) {
+                throw new Exception("No user data found for userId: " + userId);
             }
 
+            // userId에 해당하는 사진 그룹 데이터를 가져옴
+            PhotoGroup photoGroup = photoGroupService.getPhotoGroupById(userId);
+
+            // 결과 데이터를 DTO로 변환
             ImagePathDTO imagePath = new ImagePathDTO();
             imagePath.setResultImagePath(user.getResultImagePath());
+            imagePath.setFacePaletteImagePath(user.getFacePaletteImagePath());
 
-            String result = userService.getResultById(userId); // userService에서 결과를 가져오는 메서드 호출
+            String result = user.getResult(); // 이미 user 엔티티에 있는 결과를 사용
 
             resultDTO resultDTO = new resultDTO();
             resultDTO.setImagePath(imagePath);
@@ -86,9 +93,10 @@ public class UserController {
             return ResponseEntity.ok(resultDTO);
         } catch (Exception e) {
             e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to get result.");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to get result for userId: " + userId);
         }
     }
+
     @GetMapping("/qr-code")
     @ResponseBody
     public ResponseEntity<Object> generateQRCodeLink() {
@@ -97,7 +105,7 @@ public class UserController {
             Long maxUserId = userRepository.findMaxUserId();
 
             // QR 코드 생성 링크 생성
-            String qrCodeLink = "http://192.168.0.75:8080/user/" + maxUserId;
+            String qrCodeLink = "http://colorlog.site/user/" + maxUserId;
 
             // 생성된 QR 코드 링크를 포함한 응답 반환
             Map<String, String> response = new HashMap<>();

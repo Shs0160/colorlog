@@ -46,12 +46,12 @@ public class HomeController {
     }*/
 
     @GetMapping("/user/{userId}")
-    public RedirectView userPage(@PathVariable Long userId, HttpServletResponse response) {
+    public ResponseEntity<User> userPage(@PathVariable Long userId, HttpServletResponse response) {
 
-        String reactDevServer = "http://192.168.0.75:3000"; // React 개발 서버 URL
-        return new RedirectView(reactDevServer + "/user/" + userId);
-        /*User user = userService.getUserById(userId);
-        return ResponseEntity.ok(user);*/
+        /*String reactDevServer = "http://192.168.0.76:3000"; // React 개발 서버 URL
+        return new RedirectView(reactDevServer + "/user/" + userId);*/
+        User user = userService.getUserById(userId);
+        return ResponseEntity.ok(user);
 
     }
        /* ObjectMapper objectMapper = new ObjectMapper();
