@@ -105,7 +105,7 @@ public class UserController {
             Long maxUserId = userRepository.findMaxUserId();
 
             // QR 코드 생성 링크 생성
-            String qrCodeLink = "http://colorlog.site/user/" + maxUserId;
+            String qrCodeLink = "https://colorlog.site/user/" + maxUserId;
 
             // 생성된 QR 코드 링크를 포함한 응답 반환
             Map<String, String> response = new HashMap<>();

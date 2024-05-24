@@ -45,15 +45,15 @@ public class HomeController {
         }
     }*/
 
-    @GetMapping("/user/{userId}")
+    /*@GetMapping("/user/{userId}")
     public ResponseEntity<User> userPage(@PathVariable Long userId, HttpServletResponse response) {
 
-        /*String reactDevServer = "http://192.168.0.76:3000"; // React 개발 서버 URL
-        return new RedirectView(reactDevServer + "/user/" + userId);*/
+        *//*String reactDevServer = "http://192.168.0.76:3000"; // React 개발 서버 URL
+        return new RedirectView(reactDevServer + "/user/" + userId);*//*
         User user = userService.getUserById(userId);
         return ResponseEntity.ok(user);
 
-    }
+    }*/
        /* ObjectMapper objectMapper = new ObjectMapper();
         try {
             String userJson = objectMapper.writeValueAsString(user);
