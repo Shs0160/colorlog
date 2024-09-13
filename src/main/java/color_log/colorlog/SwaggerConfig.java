@@ -38,7 +38,8 @@ public class SwaggerConfig {
                         .description("colorlog api명세서")
                         .contact(new Contact()
                                 .name("songheesu")
-                                .url("http://localhost:8080")
+                                .url("https://35.216.11.182:8080")
+                                //.url("http://localhost:8080")
                                 .email("bsthss0160@gmail.com"))
                         .license(new License().name("Apache 2.0").url("http://springdoc.org")));
     }
