@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends JpaRepository<User, Long>{
 
     @Override
-    User save(User user);//save하면 회원이 저장소에 저장
+    User save(User user);
     @Query("SELECT MAX(u.UserId) FROM User u")
     Long findMaxUserId();
 

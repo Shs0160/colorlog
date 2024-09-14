@@ -102,13 +102,11 @@ public class UserController {
     @ResponseBody
     public ResponseEntity<Object> generateQRCodeLink() {
         try {
-            // 현재 데이터베이스에서 가장 큰 userId 가져오기
+
             Long maxUserId = userRepository.findMaxUserId();
 
-            // QR 코드 생성 링크 생성
             String qrCodeLink = "https://colorlog.site/user/" + maxUserId;
 
-            // 생성된 QR 코드 링크를 포함한 응답 반환
             Map<String, String> response = new HashMap<>();
             response.put("link", qrCodeLink);
 

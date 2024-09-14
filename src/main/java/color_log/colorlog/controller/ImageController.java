@@ -48,10 +48,8 @@ public class ImageController {
     ) {
 
         try {
-            // photogroupid 가져오기
             Long photoGroupId = photoGroupService.getNextPhotoGroupId();
 
-            // S3에 파일 업로드 및 경로 가져오기
             String imagePath = s3Uploader.uploadFileToS3(image1, photoGroupId + "_image");
             String videoPath = s3Uploader.uploadFileToS3(video, photoGroupId + "_video");
 
@@ -68,16 +66,14 @@ public class ImageController {
     @ResponseBody
     public ResponseEntity<Object> downloadPhotoGroup(@RequestParam Long userId) {
         try {
-            // DB에서 가장 큰 photogroupid 가져오기
             Long maxPhotoGroupId = photoGroupService.getMaxPhotoGroupId();
 
             Long maxUserId = userService.getMaxUserId();
 
-            // photogroupid와 userid의 가장 큰 값이 같은지 확인
             if (!maxPhotoGroupId.equals(maxUserId)) {
                 throw new Exception("photogroupid and userid mismatch");
             }
-            // 경로들을 담을 객체 생성
+
                     PhotoGroup photoGroup = photoGroupService.getPhotoGroupById(userId);
 
             PhotoGroupPathDTO photoGroupPaths = new PhotoGroupPathDTO();

@@ -24,7 +24,7 @@ public class SwaggerConfig {
     public GroupedOpenApi publicApi() {
         return GroupedOpenApi.builder()
                 .group("colorlog-public")
-                .pathsToMatch("/**")  // Swagger에 표시될 경로를 지정합니다.
+                .pathsToMatch("/**")
                 .build();
     }
 
