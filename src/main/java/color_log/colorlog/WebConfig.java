@@ -11,7 +11,9 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/**")
-                .allowedOrigins("http://colorlog.site", "https://colorlog.site", "http://localhost:3000", "http://192.168.1.8:3000")
+                .allowedOrigins("http://colorlog.site", "https://colorlog.site", "http://localhost:3000",
+                        "http://172.17.7.153:3000", "http://172.17.7.168", "colorlog.site", "www.colorlog.site",
+                        "http://www.colorlog.site")
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowedHeaders("*");
 
