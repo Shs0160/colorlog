@@ -68,9 +68,10 @@ public class PhotoGroupService {
         photoGroupRepository.save(photoGroup);
     }
 
+    /*
     private String saveFileToStorage(MultipartFile file) throws IOException {
         return "/path/to/storage/" + file.getOriginalFilename();
-    }
+    }*/
 
 
 }
