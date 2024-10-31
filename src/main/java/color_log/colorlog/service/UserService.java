@@ -61,12 +61,13 @@ public class UserService {
     }
 
     @Transactional
-    public void processUserData(String result, String resultImagePath, String facePaletteImagePath) {
+    public void processUserData(String result, String resultImagePath, String facePaletteImagePath, Long lightNum, Long frameNum) {
         User user = new User();
         user.setResult(result);
         user.setResultImagePath(resultImagePath);
         user.setFacePaletteImagePath(facePaletteImagePath);
-
+        user.setLightNum(lightNum);
+        user.setFrameNum(frameNum);
         userRepository.save(user);
     }
 

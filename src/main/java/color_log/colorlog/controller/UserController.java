@@ -46,7 +46,10 @@ public class UserController {
     public ResponseEntity<Object> uploadUserData(
             @RequestParam("result") String result,
             @RequestParam("resultImage") MultipartFile resultImage,
-            @RequestParam("facePalette") MultipartFile facePalette // 추가된 부분
+            @RequestParam("facePalette") MultipartFile facePalette,
+            @RequestParam("lightNum") Long lightNum,
+            @RequestParam("frameNum") Long frameNum
+
     ) {
         try {
             Long userId = userService.getNextMaxUserId();
@@ -58,7 +61,7 @@ public class UserController {
             String facePaletteImagePath = s3Uploader.uploadFileToS3(facePalette, userId + "_facePaletteImage");
 
             // 결과와 경로를 데이터베이스에 저장
-            userService.processUserData(result, resultImagePath, facePaletteImagePath);
+            userService.processUserData(result, resultImagePath, facePaletteImagePath, lightNum, frameNum);
 
             return ResponseEntity.ok().body("User uploaded successfully.");
         } catch (Exception e) {
@@ -86,10 +89,14 @@ public class UserController {
             imagePath.setFacePaletteImagePath(user.getFacePaletteImagePath());
 
             String result = user.getResult(); // 이미 user 엔티티에 있는 결과를 사용
+            Long lightNum = user.getLightNum();
+            Long frameNum = user.getFrameNum();
 
             resultDTO resultDTO = new resultDTO();
             resultDTO.setImagePath(imagePath);
             resultDTO.setResult(result);
+            resultDTO.setLightNum(lightNum);
+            resultDTO.setFrameNum(frameNum);
 
             return ResponseEntity.ok(resultDTO);
         } catch (Exception e) {

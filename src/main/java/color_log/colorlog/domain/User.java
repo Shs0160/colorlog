@@ -24,6 +24,10 @@ public class User {
 
     private String facePaletteImagePath;
 
+    private Long lightNum;
+
+    private Long frameNum;
+
     @ManyToOne
     @JoinColumn(name = "photo_group_id")
     private PhotoGroup photoGroup;
@@ -68,6 +72,21 @@ public class User {
         this.facePaletteImagePath = facePaletteImagePath;
     }
 
+    public Long getLightNum() {
+        return lightNum;
+    }
+
+    public void setLightNum(Long lightNum) {
+        this.lightNum = lightNum;
+    }
+
+    public Long getFrameNum() {
+        return frameNum;
+    }
+
+    public void setFrameNum(Long frameNum) {
+        this.frameNum = frameNum;
+    }
 }
 
 
