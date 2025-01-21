@@ -74,13 +74,13 @@ public class UserController {
     @ResponseBody
     public ResponseEntity<Object> getResult(@RequestParam Long userId) {
         try {
-            // userId에 해당하는 사용자 데이터를 가져옴
+            // userI와 매칭되는 사용자 데이터를 가져옴
             User user = userService.getUserById(userId);
             if (user == null) {
                 throw new Exception("No user data found for userId: " + userId);
             }
 
-            // userId에 해당하는 사진 그룹 데이터를 가져옴
+            // userId와 매칭되는 사진 그룹 데이터를 가져옴
             PhotoGroup photoGroup = photoGroupService.getPhotoGroupById(userId);
 
             // 결과 데이터를 DTO로 변환
@@ -88,7 +88,7 @@ public class UserController {
             imagePath.setResultImagePath(user.getResultImagePath());
             imagePath.setFacePaletteImagePath(user.getFacePaletteImagePath());
 
-            String result = user.getResult(); // 이미 user 엔티티에 있는 결과를 사용
+            String result = user.getResult();
             Long lightNum = user.getLightNum();
             Long frameNum = user.getFrameNum();
 
