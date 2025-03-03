@@ -14,7 +14,7 @@ AI 기반 퍼스널컬러 진단 기능을 탑재한 포토부스 <b>컬러로�
 </p>
 
 <br>
----
+
 
 ### 웹사이트
 
@@ -34,13 +34,12 @@ AI 기반 퍼스널컬러 진단 기능을 탑재한 포토부스 <b>컬러로�
 <p style="text-align: center"><img src=https://velog.velcdn.com/images/yimethan/post/02aba39b-9829-4a9f-bf9e-b59cec64172f/image.png width=200></p>
 
 <br>
----
+
 
 #### 아키텍처
 
 ![](https://velog.velcdn.com/images/yimethan/post/a6e72add-40f4-44f8-b2e8-baf05d018dae/image.png)
 
----
 
 ### Awards and Activities
 
