@@ -14,9 +14,10 @@ AI 기반 퍼스널컬러 진단 기능을 탑재한 포토부스 <b>컬러로�
 </p>
 
 <br>
+--
 
 ### 웹사이트
----
+
 <p style="text-align: left; border: 1px solid; padding: 10px; box-shadow: 1px 2px; line-height: 2">
 ✔️ 사진에 함께 인쇄된 QR코드 통해 접속<br>
 ✔️ 진단 받은 퍼스널컬러에 해당하는 웹사이트 디자인<br>
@@ -33,11 +34,13 @@ AI 기반 퍼스널컬러 진단 기능을 탑재한 포토부스 <b>컬러로�
 <p style="text-align: center"><img src=https://velog.velcdn.com/images/yimethan/post/02aba39b-9829-4a9f-bf9e-b59cec64172f/image.png width=200></p>
 
 <br>
+--
 
 #### 아키텍처
 
 ![](https://velog.velcdn.com/images/yimethan/post/a6e72add-40f4-44f8-b2e8-baf05d018dae/image.png)
 
+--
 
 ### Awards and Activities
 
