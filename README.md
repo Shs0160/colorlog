@@ -16,7 +16,7 @@ AI 기반 퍼스널컬러 진단 기능을 탑재한 포토부스 <b>컬러로�
 <br>
 
 ### 웹사이트
-
+---
 <p style="text-align: left; border: 1px solid; padding: 10px; box-shadow: 1px 2px; line-height: 2">
 ✔️ 사진에 함께 인쇄된 QR코드 통해 접속<br>
 ✔️ 진단 받은 퍼스널컬러에 해당하는 웹사이트 디자인<br>
@@ -33,3 +33,29 @@ AI 기반 퍼스널컬러 진단 기능을 탑재한 포토부스 <b>컬러로�
 <p style="text-align: center"><img src=https://velog.velcdn.com/images/yimethan/post/02aba39b-9829-4a9f-bf9e-b59cec64172f/image.png width=200></p>
 
 <br>
+
+#### 아키텍처
+
+![](https://velog.velcdn.com/images/yimethan/post/a6e72add-40f4-44f8-b2e8-baf05d018dae/image.png)
+
+
+### Awards and Activities
+
+#### LINC3.0 캡스톤디자인 경진대회 `대상 (교육부 장관 겸 부총리상)` 수상
+
+#### 2024 산학연협력엑스포 @벡스코 (Busan, Korea)
+
++ 3일 간 `약 300명` 이용 (전 연령대)
++ 봄: 분홍색, 여름: 하늘색, 가을: 벽돌색, 겨울 진보라색 프레임을 가장 많이 선택
++ 봄: 분홍색, 여름: 연보라색, 가을: 황토나 청색, 겨울 파란색 조명을 가장 많이 선택
+
+#### 순천향대 중앙도서관 1층 로비 전시 (Asan, Korea)
+
++ 4일 (하루 3~4시간 운영) 간 `약 180명` 이용 (주로 20대 초반)
++ 기본 프레임을 주로 선택 (흰색, 검정색 - 분홍 계열이 없으면 엑스포 프레임을 선택하기도)
+  + 러블리하거나 시크하거나 둘 중 하나일까?
++ 봄: 분홍색, 여름: 분홍색, 가을: 청색, 겨울: 보라색 조명을 가장 많이 선택
+
+#### 특허 출원
+
+#### 2024 SW인재페스티벌 @세종대 (Seoul, Korea)
