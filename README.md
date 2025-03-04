@@ -41,7 +41,7 @@ AI 기반 퍼스널컬러 진단 기능을 탑재한 포토부스 <b>컬러로�
 ![](https://velog.velcdn.com/images/yimethan/post/a6e72add-40f4-44f8-b2e8-baf05d018dae/image.png)
 
 ### API 명세서
-<img src="https://github.com/user-attachments/assets/9fe6147f-6798-4006-9dd9-b23a7b5c19ae" width="700">
+<img src="https://github.com/user-attachments/assets/9fe6147f-6798-4006-9dd9-b23a7b5c19ae" width="900">
 
 
 ### Awards and Activities
