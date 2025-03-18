@@ -62,7 +62,7 @@ AI 기반 퍼스널컬러 진단 기능을 탑재한 포토부스 <b>컬러로�
 + 봄: 분홍색, 여름: 분홍색, 가을: 청색, 겨울: 보라색 조명을 가장 많이 선택
 
 #### 실제 운영기간동안 얻은 사용자 데이터를 기반으로 내린 분석
-<img src="https://github.com/user-attachments/assets/05561374-d51a-4dfb-b812-7f8e8db70bc0" width="500">
+<img src="https://github.com/user-attachments/assets/05561374-d51a-4dfb-b812-7f8e8db70bc0" width="800">
 
 #### 특허 출원
 
